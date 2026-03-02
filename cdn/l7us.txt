@@ -1,0 +1,6 @@
+pkg install proot-distro -y && \
+proot-distro install ubuntu || true && \
+proot-distro login ubuntu -- bash -ic "curl -fsSL https://opencode.ai/install | bash" && \
+grep -qxF "alias opencode='proot-distro login ubuntu -- bash -ic \"opencode\"'" ~/.bashrc || \
+echo "alias opencode='proot-distro login ubuntu -- bash -ic \"opencode\"'" >> ~/.bashrc && \
+source ~/.bashrc
